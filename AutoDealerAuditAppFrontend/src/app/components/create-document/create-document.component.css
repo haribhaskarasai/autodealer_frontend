@@ -1,0 +1,18 @@
+.inp-style{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.head-style{
+    background-color:rgb(245, 242, 242);
+}
+.form-decor{
+    background-color:rgb(245, 242, 242);
+}
+label{
+    color: black !important;
+}
+.title{
+    color: black;
+    font-size: 24px;
+}

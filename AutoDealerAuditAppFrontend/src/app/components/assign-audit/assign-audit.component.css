@@ -1,0 +1,23 @@
+.assign-card{
+    background-size: cover;
+    width: 99%;
+    border: 1px ;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px #888888;
+    margin:10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color:#0000;
+    background: skyblue;
+  }
+
+.plus-btn{
+    border:0;
+    padding: auto;
+    background-color: transparent;
+}
+

@@ -1,0 +1,202 @@
+<div class="top-buttons">
+    <h1 class="title">Document <span class="title-span">Library</span></h1>
+    <button (click)="openDialog()" class="create-doc add-newbutton">Add New</button>
+</div>
+<!-- <div *ngFor="let r of multipleDocEntries$ | async" >
+    <p>{{r}}</p>
+</div> -->
+
+<div class="example-container mat-elevation-z8">
+
+    <table class="mat-elevation-z8 table-container" mat-table [dataSource]="dataSource" matSort matSortActive="created"
+        matSortDisableClear matSortDirection="desc">
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+            <th class="header select-cell-width" mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="checkboxSelect($event ) ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let doc" class=".select-cell-width">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                    (change)="checkboxMultipleSelect($event, doc) ? selection.toggle(doc) : null"
+                    [checked]="selection.isSelected(doc)">
+                </mat-checkbox>
+            </td>
+        </ng-container>
+        <ng-container style="width: 100px !important;" matColumnDef="country">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Cntry </span>
+                    <mat-form-field class="filter" appearance="fill">
+                        <mat-select [formControl]="countryFilter" class="search text-dark">
+                            <mat-option value="" style="color: black;">All</mat-option>
+                            <mat-option *ngFor="let country of countriesList"
+                                style="color: black; background-color: white;" value={{country.countryname}}>
+                                {{ country.countryname}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc" style="color: black;">{{doc.country}} </td>
+        </ng-container>
+        <ng-container matColumnDef="year">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Yr</span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="yearFilter" class="search text-center">
+                    </mat-form-field>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc">{{doc.year}}</td>
+        </ng-container>
+        <ng-container matColumnDef="programCode">
+
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Prog.Code
+                    </span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="progCodeFilter" class="search">
+                    </mat-form-field>
+                </div>
+            </th>
+
+            <td mat-cell *matCellDef="let doc">{{doc.programCode}}</td>
+        </ng-container>
+        <ng-container matColumnDef="resourceType">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block " mat-sort-header>
+                        Res.Type</span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="resTypeFilter" class="search">
+                    </mat-form-field>
+                </div>
+
+            </th>
+            <td mat-cell *matCellDef="let doc">{{doc.resourceType}}</td>
+        </ng-container>
+        <ng-container matColumnDef="documentTitle">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Doc.Title</span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+
+                        <input matInput [formControl]="docTitleFilter" class="search">
+                    </mat-form-field>
+                </div>
+
+            </th>
+            <td mat-cell *matCellDef="let doc">{{doc.documentTitle.split('%').shift()}}</td>
+        </ng-container>
+        <ng-container matColumnDef="category">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Category</span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="categoryFilter" class="search">
+                    </mat-form-field>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc">{{doc.category}}</td>
+        </ng-container>
+        <ng-container matColumnDef="revisionDate">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Rev.Date</span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="revDateFilter" class="search">
+                    </mat-form-field>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc">{{doc.revisionDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="revisionStatus">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Rev.Status</span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-select [formControl]="revStatusFilter" class="search">
+                            <mat-option value="">All</mat-option>
+                            <mat-option *ngFor="let revisionStatus of revisionStatusList" value={{revisionStatus}}>
+                                {{ revisionStatus.charAt(0).toUpperCase() + revisionStatus.slice(1)}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc">{{doc.revisionStatus == true? "Reviewed": "Not Reviewed" }}</td>
+        </ng-container>
+        <ng-container matColumnDef="documentStatus">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Doc.Status</span>
+                    <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <mat-select [formControl]="docStatusFilter" class="search">
+                            <mat-option value="">All</mat-option>
+                            <mat-option *ngFor="let docStatus of docStatusList" value={{docStatus}}>
+                                {{ docStatus}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc">{{doc.documentStatus == true? "Active": " Archived" }}</td>
+        </ng-container>
+        <ng-container matColumnDef="document">
+            <th class="header similar-cell-width" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Document</span>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc" class="document-cell-width"><button class="link"
+                    (click)="dataURLtoFile(doc.id, doc.documentTitle)">{{doc.documentTitle.split('%').pop()}}</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="task">
+            <th class="header task-column-header" mat-header-cell *matHeaderCellDef>
+                <div class="d-flex flex-column align-items-center">
+                    <span class="d-block" mat-sort-header>
+                        Task</span>
+                </div>
+            </th>
+            <td mat-cell *matCellDef="let doc">
+                <div class="task-column">
+                    <button class="btnn" (click)="docSelected(doc)"><i class="bi bi-pencil"></i></button>
+                    <button class="btnn" (click)="deleteDoc(doc.id)"><i class="bi bi-trash3"></i></button>
+                </div>
+
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let doc; columns: columnsToDisplay"></tr>
+
+
+    </table>
+    <mat-paginator class="" style="background-color: #24a0ed;" #paginator [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 15]">
+    </mat-paginator>
+</div>

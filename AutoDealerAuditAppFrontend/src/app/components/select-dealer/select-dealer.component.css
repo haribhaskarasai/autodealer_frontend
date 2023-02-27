@@ -1,0 +1,685 @@
+.example-container {
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   background-color: #ffffff;
+ }
+
+ .select-dealer-bg-container {
+   display: flex;
+   flex-direction: row;
+   min-height: 100vh;
+   width: 100%;
+   background-color: #ffffff;
+   border-style: none;
+   border-color: #ffffff;
+ }
+
+ table {
+   width: 100%;
+   border-color: #ffffff;
+ }
+
+ .table-container {
+   display: flex;
+   flex-direction: column;
+   background-color: #ffffff;
+   width: 100%;
+ }
+
+ .header {
+   padding: 5px;
+   background-color: #0275d8;
+   text-align: center !important;
+ }
+
+ .filter {
+   display: block;
+   background-color: #0275d8 !important;
+   width: 100%;
+ }
+
+ ::ng-deep .mat-form-field-label {
+   position: relative !important;
+   color: #1f1d1d;
+ }
+
+ th.mat-header-cell {
+   text-align: center;
+   border: 1px solid #ccc;
+   padding: 0 !important;
+ }
+
+ td.mat-cell {
+   text-align: center;
+   border: 1px solid #ccc;
+   padding: 0 !important;
+ }
+
+ /* ::ng-deep .document-cell-width {
+    min-width: 100px;
+    max-width: 150px;
+    overflow-x: hidden;
+  
+  } */
+
+ ::ng-deep .document-cell-width:hover {
+   overflow-x: auto;
+
+ }
+
+ /* ::ng-deep .task-column-header {
+    min-height: 100px;
+  } */
+
+ /* ::ng-deep .task-column {
+    min-height: 48px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  } */
+
+
+
+
+ ::ng-deep .mat-form-field-underline {
+   display: none;
+ }
+
+ ::ng-deep .mat-cell {
+   color: #1f1d1d;
+   text-align: center;
+   background-color: #ffffff;
+ }
+
+
+ ::ng-deep .mat-checkbox-inner-container {
+   color: #1f1d1d;
+   background-color: white;
+   border: solid 1px black;
+ }
+
+ ::ng-deep .mat-form-field-infix {
+   text-align: center;
+ }
+
+ ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+   background-color: #ffffff;
+ }
+
+ ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+   background-color: #ffffff;
+ }
+
+ ::ng-deep td.mat-cell {
+   text-align: center;
+   border: 1px solid rgb(17, 17, 17);
+   padding: 0 !important;
+   min-height: 48px;
+   width: 10%;
+ }
+
+ ::ng-deep th.mat-header-cell {
+   text-align: center;
+   border: 1px solid rgb(17, 17, 17);
+   padding: 0 !important;
+   min-height: 48px;
+   width: 10%;
+ }
+
+ ::ng-deep .mat-select-value {
+   color: #1f1d1d;
+ }
+
+ .search {
+   background-color: #ffffff;
+   height: 25px;
+   border-radius: 1px;
+   max-width: 90%;
+   align-self: center;
+   margin: auto;
+   color: #1f1d1d;
+   font-weight: 500;
+ }
+
+
+
+ .side-navigation-bar-container {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   width: 15vw;
+   height: 100vh;
+   background-color: #ffffff;
+ }
+
+ .side-navigation-title-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   background-color: #1a2d97;
+   width: 15vw;
+   height: 150px;
+ }
+
+ .side-navigation-title {
+   font-family: sans-serif;
+   font-size: 20px;
+   color: #ffffff;
+   font-weight: 700;
+   padding: 0;
+ }
+
+ .nav-items-container {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   align-items: flex-start;
+   padding-left: 10px;
+   justify-content: flex-start;
+   height: 60vh;
+ }
+
+ .dashboard-button {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   width: 90%;
+   border-style: none;
+   background-color: transparent;
+   outline: none;
+   height: 50px;
+   margin-top: 10px;
+   margin-right: 10px;
+ }
+
+ .dashoard-icon {
+   padding-bottom: 18px;
+   padding-right: 10px;
+   color: #423b3b;
+   font-size: 25px;
+ }
+
+ .plan-button {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   width: 90%;
+   margin-left: 10px;
+   border-style: none;
+   background-color: transparent;
+   outline: none;
+   height: 40px;
+   margin-top: 10px;
+   margin-right: 10px;
+ }
+
+ .plan-icon {
+   padding-bottom: 18px;
+   padding-right: 10px;
+   color: #423b3b;
+
+ }
+
+ .nav-title {
+   color: #000000;
+   font-size: 20px;
+   font-weight: 500;
+   font-family: sans-serif;
+ }
+
+ .nav-title-1 {
+   color: #3744f3;
+   font-size: 18px;
+   font-weight: 500;
+   font-family: sans-serif;
+ }
+
+ .nav-title-2 {
+   color: #3744f3;
+   font-size: 15px;
+   font-weight: 500;
+   font-family: sans-serif;
+ }
+
+ .logout-button {
+   justify-self: flex-end;
+   outline: none;
+   background-color: #0275d8;
+   padding: 10px;
+   text-align: center;
+   border-radius: 10px;
+   height: 35px;
+   border-style: none;
+   width: 100px;
+   color: #ffffff;
+   font-size: 15px;
+   font-weight: 500;
+ }
+
+ .website-logo {
+   height: 50px;
+   width: 100px;
+   margin-bottom: 15px;
+   border-radius: 25px;
+ }
+
+ .form-label {
+   font-size: 16px;
+   color: #020202;
+   font-weight: 400;
+   font-family: sans-serif;
+ }
+
+ .main-container {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   background-color: rgba(211, 211, 211, 0.3);
+ }
+
+ .dealer-audit-system-title {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   background-color: #0275d8;
+   justify-content: flex-start;
+   height: 50px;
+ }
+
+ .burgre-container {
+   height: 30px;
+   width: 30px;
+   border: 1px solid #ffffff;
+   border-radius: 3px;
+   margin-left: 25px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .burger-icon {
+   color: #ffffff;
+   font-size: 25px;
+   font-weight: 400;
+ }
+
+ .main-title {
+   font-size: 20px;
+   font-weight: 500;
+   margin-left: 10px;
+   margin-top: 20px;
+   color: #ffffff;
+ }
+
+ .audit-title {
+   font-family: sans-serif;
+   font-size: 25px;
+   font-weight: 500;
+   color: #1f1e1e;
+   padding: 10px;
+ }
+
+ .audit-title-span {
+   font-family: sans-serif;
+   font-size: 25px;
+   font-weight: 600;
+   color: #141414;
+ }
+
+ .audit-ribbons-container {
+   display: flex;
+   align-items: center;
+   margin: 10px;
+   justify-content: space-around;
+   height: 20px;
+   margin-bottom: 25px;
+ }
+
+ .audit-ribbon {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-start;
+   width: 19vw;
+   height: 40px;
+   border-radius: 10px;
+   border-style: none;
+   background-color: #0275d8;
+   font-size: 16px;
+   color: #ffffff;
+   padding-left: 10px;
+   padding-top: 15px;
+   cursor: pointer;
+
+ }
+
+ .audit-ribbon1 {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: flex-start;
+   width: 19vw;
+   height: 40px;
+   border-radius: 10px;
+   border-style: none;
+   background-color: rgb(110, 111, 128);
+   font-size: 16px;
+   color: #423b3b;
+   margin-left: 10px;
+   padding-top: 15px;
+ }
+
+ .header {
+   margin: 5px;
+ }
+
+ .search-boxes-container {
+   display: flex;
+   width: 100%;
+   margin-top: 20px;
+   padding-left: 10px;
+ }
+
+ .dealer-code-container {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 10px;
+   height: 80px;
+   background-color: #0275d8;
+   box-shadow: 0px 0px 1px 1px rgba(253, 253, 253, 0.432);
+ }
+
+ .business-center-code-container {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 10px;
+   height: 80px;
+   background-color: #0275d8;
+   box-shadow: 0px 0px 1px 1px rgba(253, 253, 253, 0.432);
+ }
+
+ .dealer-name-container {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   padding: 10px;
+   height: 80px;
+   background-color: #0275d8;
+   box-shadow: 0px 0px 1px 1px rgba(253, 253, 253, 0.432);
+ }
+
+ .name-sort-icons-container {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+ }
+
+ .title-names {
+   font-family: sans-serif;
+   font-size: 16px;
+   color: #ffffff;
+ }
+
+ .para-names {
+   font-family: sans-serif;
+   font-size: 15px;
+   font-weight: 500;
+   color: #000000;
+   padding-top: 5px;
+ }
+
+ .sort-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+   height: 40px;
+   width: 10px;
+   margin-left: 10px;
+ }
+
+ .sort-icon {
+   font-size: 25px;
+   color: #ffffff;
+ }
+
+ .filter-search-container {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .filter-input-box {
+   border-style: none;
+   background-color: #ffffff;
+   height: 22px;
+   outline: none;
+   color: #000000;
+   font-weight: 500;
+   font-size: 15px;
+   padding: 5px;
+ }
+
+ .dealers-list {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   width: 100%;
+   list-style-type: none;
+   padding-left: 10px;
+   margin-bottom: 0;
+ }
+
+ .dealer-list-element {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   height: 40px;
+   width: 80vw;
+   margin-bottom: 0;
+ }
+
+ .dealer-list-element-dealer-code {
+   display: flex;
+   align-items: center;
+   height: 40px;
+   width: 12vw;
+   padding-left: 5px;
+   box-shadow: 0px 0px 1px 0.5px rgba(0, 0, 0, 0.432);
+ }
+
+ .dealer-list-element-dealer-business-center {
+   display: flex;
+   align-items: center;
+   height: 40px;
+   width: 20vw;
+   padding-left: 5px;
+   box-shadow: 0px 0px 1px 0.5px rgba(0, 0, 0, 0.432);
+ }
+
+ .dealer-list-element-dealer-name {
+   display: flex;
+   align-items: center;
+   height: 40px;
+   padding-left: 5px;
+   width: 22vw;
+   box-shadow: 0px 0px 1px 0.5px rgba(0, 0, 0, 0.432);
+ }
+
+ .outer-decor {
+   padding: 10px;
+ }
+
+ .font-style {
+   color: azure;
+   font-size: medium;
+   padding: 8px;
+
+ }
+
+ input {
+   width: 100%;
+ }
+
+ .inner {
+   background-color: white;
+ }
+
+ .boxing-decor {
+   margin-bottom: 15px;
+ }
+
+ table {
+   font-family: arial, sans-serif;
+   border-collapse: collapse;
+   width: 100%;
+ }
+
+ td,
+ th {
+   border: 1px solid #dddddd;
+   padding: 8px;
+ }
+
+ tr:nth-child(even) {
+   background-color: #dddddd;
+   opacity: 0.8;
+ }
+
+ .acc-dec-buttons {
+   display: flex;
+   flex-direction: column;
+   padding: 0;
+ }
+
+ .table-h {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+
+
+ }
+
+ .assign-card {
+   background-size: cover;
+   width: 99%;
+   border: 1px;
+   padding: 10px;
+   /* box-shadow: 1px 1px 1px 1px #888888; */
+   margin: 10px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   margin-top: 30px;
+ }
+
+ input[type="date"]::-webkit-calendar-picker-indicator {
+   color: #0000;
+   background: skyblue;
+ }
+
+ .plus-btn {
+   border: 0;
+   padding: auto;
+   background-color: transparent;
+ }
+
+ .search-icon {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 30px;
+   width: 30px;
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+   background-color: #0275d8;
+ }
+
+ .bg-container {
+   box-shadow: 1px 1px 1px 1px #88888888;
+ }
+
+ .dealer-title {
+   color: rgb(53, 133, 202);
+   font-family: arial, sans-serif;
+ }
+
+ .text {
+   font-family: arial, sans-serif;
+   color: black;
+ }
+
+ .button-container {
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   width: 95%;
+ }
+
+ .func-buttons {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   width: 70px;
+   height: 25px;
+   padding: 10px;
+   margin: 5px;
+   background-color: #0275d8;
+   border-radius: 2px;
+   border-style: none;
+   color: #ffffff;
+   font-family: sans-serif;
+   font-size: 12px;
+ }
+
+ .icons-1 {
+   margin-left: 5px;
+   size: 10px;
+ }
+
+ .customcolor {
+   background-color: #0275d8;
+ }
+
+ .customwidth {
+   margin: 40px 0px;
+   padding: 20px 0px;
+ }
+
+ .outerauditorselect {
+   background-color: white;
+   margin: 10px;
+ }
+
+ .selected-auditors-list {
+   height: 40px;
+ }
+
+ .infoleft {
+   margin-left: 40px;
+   color: black;
+
+ }
+
+ .infoicon {
+   margin-left: 27px;
+   color: black;
+ }
+
+ .custominput {
+   border-radius: 3px;
+   border: 0.5px solid black;
+   height: 25px;
+ }
+
+ .auditors-list {
+   margin-top: 30px;
+   margin-left: 20px;
+ }

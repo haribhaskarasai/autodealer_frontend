@@ -1,0 +1,46 @@
+.bg-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffffff;
+
+}
+.side-navigation-bar-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 17%;
+    min-height: 100vh;
+    background-color: transparent;
+}
+.side-navigation-title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3646a0;
+    width:100%;
+    height: 150px;
+    color: #ffffff;
+}
+.side-navigation-title{
+    font-family: sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+}
+.side-navigation-company-name{
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+.nav-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #b1193f;
+    width:100%;
+    min-height:75vh ;
+    color: #ffffff;
+}

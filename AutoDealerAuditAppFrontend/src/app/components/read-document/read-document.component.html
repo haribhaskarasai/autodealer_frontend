@@ -1,0 +1,161 @@
+<div class="top-buttons">
+    <button (click)="openDialog()"  class="btn btn-primary">Add New</button>
+</div>
+
+<table class="table table-striped">
+    <thead class="bg-primary text-light customheader">
+        <tr>
+            <th scope="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+                </div>
+            </th>
+            <th scope="col">Country
+                <!-- Country DropDown Starts -->
+                <br>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-custom-text">All</button>
+                    <button type="button" class="btn btn-sm btn-custom dropdown-toggle dropdown-toggle-split"
+                        id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-reference="parent">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference"
+                        *ngFor="let country of countries | async">
+                        <li><a class="dropdown-item" href="">{{country.countryname}}</a></li>
+                        <!-- <li><a class="dropdown-item" href="#">{{country.countryname}}</a></li>                   -->
+                    </ul>
+                </div>
+                <!-- Country DropDown End -->
+            </th>
+            <th scope="col">Yr
+                <br><input type="search" class="custominput">
+            </th>
+            <th scope="col">Prog. Code
+                <br><input type="search" class="custominput">
+            </th>
+            <th scope="col">Res. Type
+                <br><input type="search" class="custominput">
+            </th>
+            <th scope="col">Doc. Title
+                <br><input type="search" class="custominput">
+            </th>
+            <th scope="col">Category
+                <br><input type="search" class="custominput">
+            </th>
+            <th scope="col">Documents
+                <br><input type="search" class="custominput">
+            </th>
+            <th scope="col">Rev. Date
+                <br><input type="search" class="custominput">
+            </th>
+            <th scope="col">Rev. Status
+                <!-- Country DropDown Starts -->
+                <br>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-custom-text">All</button>
+                    <button type="button" class="btn btn-sm btn-custom dropdown-toggle dropdown-toggle-split"
+                        id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-reference="parent">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                        <li><a class="dropdown-item" href="#">True</a></li>
+                        <li><a class="dropdown-item" href="#">False</a></li>
+                    </ul>
+                </div>
+                <!-- Country DropDown End -->
+            </th>
+            <th scope="col">Doc. Status
+                <!-- Country DropDown Starts -->
+                <br>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-custom-text">All</button>
+                    <button type="button" class="btn btn-sm btn-custom dropdown-toggle dropdown-toggle-split"
+                        id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false"
+                        data-bs-reference="parent">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                        <li><a class="dropdown-item" href="#">True</a></li>
+                        <li><a class="dropdown-item" href="#">False</a></li>
+                    </ul>
+                </div>
+                <!-- Country DropDown End -->
+            </th>
+            <th scope="col">Task<br>&nbsp;<br></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let document of documents">
+            <td>
+
+                <input class="form-check-input" type="checkbox" [(ngModel)]="isSelected" 
+                    id="flexCheckDefault">
+
+            </td>
+            <td>{{document.country}}</td>
+            <td>{{document.year}}</td>
+            <td>{{document.programCode}}</td>
+            <td>{{document.resourceType}}</td>
+            <td>{{document.documentTitle.split('%').shift() }}</td>
+            <td>{{document.category}}</td>
+            <td>
+                <a  class="link list-group-item list-group-item-action" (click)="dataURLtoFile(document)" >{{ document.documentTitle.split('%').pop()}}</a>
+            </td>
+            <td>{{document.revisionDate}}</td>
+            <td>{{document.revisionStatus}}</td>
+            <td>{{document.documentStatus}}</td>
+            <td>
+                <button (click)="docSelected(document)"   class="btnn"><i class="bi bi-pencil"></i></button>
+                <button class="btnn"><i class="bi bi-trash3"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- (change)="isAllSelected()" -->
+
+<!-- <div style="text-align:center">
+    <h1>
+      {{ title }}
+    </h1>
+  </div>
+  <div class="container">
+    <div class="text-center mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <input type="checkbox" [(ngModel)]="masterSelected" name="list_name" value="m1"
+                (change)="checkUncheckAll()" /> <strong>Select/ Unselect All</strong>
+            </li>
+          </ul>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of checklist">
+              <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name" value="{{item.id}}"
+                (change)="isAllSelected()" />
+              {{item.value}}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <code>{{checkedList}}</code>
+        </div>
+      </div>
+    </div>
+  </div> -->

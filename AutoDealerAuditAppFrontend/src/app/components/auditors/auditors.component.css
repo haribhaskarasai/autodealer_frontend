@@ -1,0 +1,30 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+    opacity: 0.8;
+  }
+
+.acc-dec-buttons{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.table-h{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+
+}
+

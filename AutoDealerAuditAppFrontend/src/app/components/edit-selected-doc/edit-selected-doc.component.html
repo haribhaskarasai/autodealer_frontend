@@ -1,0 +1,113 @@
+
+<div class=" mt-5 head-styl">
+  <h1 class="title" >
+      Edit Document
+  </h1>
+<div class="container-fluid form-decor">
+<form class="row d-flex flex-row p-3" (ngSubmit)="onSubmit()"  [formGroup]="documentForm">
+     
+       <div class="inp-style col-4">
+          <label for="">Country</label>
+          <select class="form-control" formControlName="country" >
+            <option selected>{{data.data.country}}</option>
+            <option   >Select a country</option>
+              <option *ngFor="let country of countryList">
+                {{ country.countryname }}
+              </option>
+            </select>
+      </div>
+
+      <div class="inp-style boxing-decor col-4">
+          <label for="">Section</label>
+          <select class="form-control" formControlName="section" >
+            <option selected>{{data.data.section}}</option>
+            <option  >Select a section</option>
+              <option *ngFor="let section of sectionList" >
+                {{ section.section }}
+              </option>
+            </select>
+      </div>
+
+      <div class="inp-style col-4 boxing-decor">
+          <label for="">Resource Type</label>
+          <select class="form-control" formControlName="resourceType" >
+            <option  selected >{{data.data.resourceType}}</option>
+            <option   >Select a resource type</option>
+              <option *ngFor="let resource of resourceList">
+                {{ resource }}
+              </option>
+            </select>
+      </div>
+
+      <div class="inp-style col-4 boxing-decor">
+          <label for="">Category</label>
+          <select class="form-control" formControlName="category" >
+            <option selected>{{data.data.category}}</option>
+            <option   >Select a category</option>
+            <option *ngFor="let category of categoryList">
+              {{ category }}
+            </option>
+          </select>
+      </div>
+
+      <div class="inp-style col-4 boxing-decor">
+          <label for="">Program Code</label>
+          <input class="form-control"  formControlName="programCode">
+      </div>
+
+     
+
+      <div class="inp-style col-4 boxing-decor">
+          <label for="">Revision Date</label>
+          <input class="form-control"  formControlName="revisionDate" type="date">
+      </div>
+
+      <div class="inp-style col-4 boxing-decor">
+          <label for="">Year</label>
+          <input type="number" class="form-control"  formControlName="year">
+      </div>
+
+      <div class="inp-style col-4 boxing-decor">
+          <label for="">Document Status</label>
+          <select class="form-control" (change)="onChangeDocumentStatus()" formControlName="documentStatus" >
+            <option selected>{{data.data.documentStatus?"Active":"Inactive"}}</option>
+              <option *ngFor="let status of docStatusList" >
+                {{ status}}
+              </option>
+            </select>
+      </div>
+
+      <div class="inp-style col-4 boxing-decor">
+          <label for="">Review Status</label>
+          <select class="form-control" (change)="onChangeReviewStatus()" formControlName="reviewStatus" >
+            <option selected>{{data.data.reviewStatus?"Reviewed":"Not Reviewed"}}</option>
+              <option *ngFor="let status of reviewStatusList">
+                {{ status}}
+              </option>
+            </select>
+      </div>
+     <br>
+      <div class="inp-style col-6 boxing-decor">
+          <label for="">Document Title</label>
+          <input readonly class="form-control"  formControlName="documentTitle">
+      </div>
+
+      <div class="inp-style col-6 boxing-decor">
+          <label for="">Attachment</label>
+          <input class="form-control"  type="file" accept=".txt,.pdf,.doc,.docx"  (change)="onFileChange($event)" >
+      </div>
+
+      <div class="inp-style col-12 boxing-decor">
+          <label for="">Breif Description</label>
+          <textarea class="form-control"  formControlName="description"></textarea>
+      </div>
+      
+      <div class="d-flex flex-row justify-content-end">
+          <button type="submit" class="btn btn-primary m-2">Save</button>
+          <button mat-button [mat-dialog-close]="true" class="btn btn-primary m-2">Cancel</button>
+      </div>
+  
+
+</form>
+</div>
+</div>

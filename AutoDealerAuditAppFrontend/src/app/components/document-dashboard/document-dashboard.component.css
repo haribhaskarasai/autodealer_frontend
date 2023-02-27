@@ -1,0 +1,185 @@
+p {
+  font-family: Lato;
+}
+
+table {
+  width: 100%;
+}
+
+.header {
+  padding: 5px;
+  background-color: #24a0ed;
+  text-align: center !important;
+}
+
+.filter {
+  display: block;
+  background-color: #24a0ed !important;
+  width: 100%;
+}
+
+::ng-deep .mat-form-field-label{
+  position: relative !important;
+  color: #1f1d1d;
+}
+
+th.mat-header-cell {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 0 !important;
+
+}
+
+td.mat-cell {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 0 !important;
+
+}
+
+.table-container {
+  background-color: #ffffff;
+}
+
+.similar-cell-width {
+  min-width: 100px;
+  max-width: 100px;
+}
+
+::ng-deep .document-cell-width {
+  min-width: 10px;
+  max-width: 120px;
+  overflow-x: hidden;
+
+}
+
+::ng-deep .document-cell-width:hover {
+  overflow-x: auto;
+
+}
+
+::ng-deep .task-column-header {
+  min-height: 70px;
+  width: 70px;
+}
+
+::ng-deep .task-column {
+  min-height: 48px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 70px;
+}
+
+::ng-deep .select-cell-width {
+  min-width: 50px;
+  max-width: 50px;
+
+}
+
+
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+::ng-deep .mat-cell {
+  color: #1f1d1d;
+  text-align: center;
+  background-color: #ffffff;
+  height: 20px;
+}
+
+::ng-deep .mat-checkbox-inner-container {
+  color: #1f1d1d;
+  background-color: white;
+  border: solid 1px black;
+}
+
+::ng-deep  .mat-form-field-infix{
+  text-align: center;
+}
+
+::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #ffffff;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  background-color: #ffffff;
+}
+
+::ng-deep td.mat-cell {
+  text-align: center;
+  border: 1px solid rgb(17, 17, 17);
+  padding: 0 !important;
+  min-height: 48px;
+}
+
+::ng-deep .mat-select-value{
+  color: #1f1d1d;
+}
+
+.example-container {
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+
+.search {
+  background-color: #ffffff;
+  height: 25px;
+  border-radius: 1px;
+  max-width: 90%;
+  align-self: center;
+  margin: auto;
+  color: #1f1d1d;
+  font-weight: 500;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.add-newbutton{
+  background-color: #24a0ed;
+ border-style: none;
+ outline: none;
+ font-family: sans-serif;
+ font-weight: 500;
+ font-size: 20px;
+padding: 10px;
+ color: #ffffff;
+ border-radius: 10px;
+}
+
+
+
+.btnn {
+  border: none;
+  background-color: transparent;
+}
+
+.link{
+  color: rgb(10, 96, 177);
+  text-decoration: underline;
+  border: none;
+}
+.top-buttons{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 75px;
+}
+.title{
+  font-family: sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #535353;
+}
+.title-span{
+  font-family: sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: #000000;
+}

@@ -1,0 +1,45 @@
+table,th,tr,td{
+    border: 1px solid lightgray;
+}
+.btn-custom-text{
+    background-color: white;
+    width: 60px;
+    border-right: 1px solid lightgray;
+}
+.btn-custom{
+    background-color: white;
+    border-left: 1px solid lightgray;
+}
+.customheader{
+    text-align: left;
+}
+.customborder{
+    border-radius: 0px;
+}
+.custominput{
+    border: none;
+}
+input[type=search]{
+    width: 100px;
+    height: 30px;
+}
+input[type=search]:focus{
+    border: none;
+    outline: none;
+    padding-left: 5px;
+}
+.btnn{
+    border: none;
+    background-color: transparent;
+}
+
+.link{
+    color: rgb(10, 96, 177);
+    text-decoration: underline;
+}
+.top-buttons{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

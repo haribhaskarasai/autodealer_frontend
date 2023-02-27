@@ -1,0 +1,502 @@
+<div class="example-container" >
+  <mat-drawer-container autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+      <div class="side-navigation-bar-container">
+        <div class="side-navigation-title-container">
+          <img
+        src="https://res.cloudinary.com/dhyg2tdfb/image/upload/v1660730549/fiat-logo_thmo3q.png"
+        alt="website logo"
+        class="website-logo"
+      />
+          <p class="title-names">STG Infotech</p>
+          <p class="title-names">{{user.role}}</p>
+        </div>
+        <div class="nav-items-container">
+          <button class="dashboard-button" (click)="onClickOnDashBoard()">
+            <i class="bi bi-speedometer2 dashoard-icon"></i>
+            <h1 class="nav-title">DASHBOARD</h1>
+          </button>
+          <div class="plan-button">
+            <i class="bi bi-puzzle-fill dashoard-icon"></i>
+            <h1 class="nav-title-1">PLAN</h1>
+            <!-- <i class="bi bi-caret-down-fill dashoard-icon"></i> -->
+          </div>
+          <button class="dashboard-button" (click)="onClickOnCreateAudit()">
+            <h1 class="nav-title-2">Create Audit</h1>
+          </button>
+          <button class="logout-button" (click)="onLogout()">Logout</button>
+        </div>
+      </div>
+    </mat-drawer>
+    <div class="select-dealer-bg-container">
+      <div class="main-container">
+        <div class="dealer-audit-system-title">
+          <div class="burgre-container">
+            <button type="button" mat-button (click)="drawer.toggle()">
+              <i class="fa fa-solid fa-bars burger-icon"></i>
+            </button>
+          </div>
+          <h1 class="main-title">Dealer Audit System</h1>
+        </div>
+        <div *ngIf="isPlanAuditClicked">
+          <h1 class="audit-title"> Create <span class="audit-title-span">Audit</span> </h1>
+          <div class="audit-ribbons-container ">
+            <div class="audit-ribbon col-3" (click)="onClickOnDealersList()"
+              [ngClass]="formsPersistentValues.showDealersList? 'audit-ribbon':'audit-ribbon1'">
+              <p>1. Select Dealer</p>
+            </div>
+            <div class="audit-ribbon col-3" (click)="onClickOnDealersInfo()"
+              [ngClass]="formsPersistentValues.showDealerData? 'audit-ribbon':'audit-ribbon1'">
+              <p>2. Dealer Information</p>
+            </div>
+            <div class="audit-ribbon col-3" (click)="onClickOnAssignAudit()"
+              [ngClass]="formsPersistentValues.showCreateAudit? 'audit-ribbon':'audit-ribbon1'">
+              <p>3. Assign Audiors</p>
+            </div>
+            <div class="audit-ribbon col-3" (click)="onClickOnReviewAudit()"
+              [ngClass]="formsPersistentValues.showReviewSubmit? 'audit-ribbon':'audit-ribbon1'">
+              <p>4. Review & Submit</p>
+            </div>
+          </div>
+          <div *ngIf="formsPersistentValues.showDealersList">
+            <div>
+              <table class="table-container dealers-list" mat-table [dataSource]="dataSource" matSort
+                matSortActive="created" matSortDisableClear matSortDirection="desc">
+                <ng-container matColumnDef="dealerCode">
+                  <th class="header " mat-header-cell *matHeaderCellDef>
+                    <div class="d-flex flex-column align-items-center">
+                      <span class="d-block" mat-sort-header>
+                        Dealer Code</span>
+                      <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="dealerCodeFilter" class="search text-center">
+                      </mat-form-field>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let dealer" (click)="selectDealer(dealer)">{{dealer.dealerCode}}</td>
+                </ng-container>
+                <ng-container matColumnDef="businessCenter">
+                  <th class="header " mat-header-cell *matHeaderCellDef>
+                    <div class="d-flex flex-column align-items-center">
+                      <span class="d-block" mat-sort-header>
+                        Business Center</span>
+                      <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="businessCenterFilter" class="search text-center">
+                      </mat-form-field>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let dealer" (click)="selectDealer(dealer)">{{dealer.businessCenter}}</td>
+                </ng-container>
+                <ng-container matColumnDef="dealerName">
+                  <th class="header " mat-header-cell *matHeaderCellDef>
+                    <div class="d-flex flex-column align-items-center">
+                      <span class="d-block" mat-sort-header>
+                        Dealer Name</span>
+                      <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="dealerNameFilter" class="search text-center">
+                      </mat-form-field>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let dealer" (click)="selectDealer(dealer)">{{dealer.dealerName}}</td>
+                </ng-container>
+                <ng-container matColumnDef="state">
+                  <th class="header " mat-header-cell *matHeaderCellDef>
+                    <div class="d-flex flex-column align-items-center">
+                      <span class="d-block" mat-sort-header>
+                        Dealer State</span>
+                      <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="dealerStateFilter" class="search text-center">
+                      </mat-form-field>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let dealer" (click)="selectDealer(dealer)">{{dealer.dealerAddress.state}}</td>
+                </ng-container>
+                <ng-container matColumnDef="country">
+                  <th class="header " mat-header-cell *matHeaderCellDef>
+                    <div class="d-flex flex-column align-items-center">
+                      <span class="d-block" mat-sort-header>
+                        Country</span>
+                      <mat-form-field class="filter" floatLabel="never">
+                        <mat-label>Search</mat-label>
+                        <input matInput [formControl]="countryFilter" class="search text-center">
+                      </mat-form-field>
+                    </div>
+                  </th>
+                  <td mat-cell *matCellDef="let dealer" (click)="selectDealer(dealer)">{{dealer.dealerAddress.country }}
+                  </td>
+                </ng-container>
+  
+                <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+                <tr mat-row *matRowDef="let person; columns: columnsToDisplay"></tr>
+              </table>
+            </div>
+          </div>
+  
+          <div *ngIf="formsPersistentValues.showDealerData" class="outer-decor">
+            <form class="container-fluid" [formGroup]="dealerInfo">
+              <div class="row inner">
+                <div class="boxing-decor col-12 bg-primary font-style mb-1">
+                  Dealearship Details
+                </div>
+                <div class="boxing-decor col-4">
+                  <label for="" class="form-label">Business Center</label>
+                  <input formControlName="businessCenter">
+                </div>
+                <div class="boxing-decor col-4">
+                  <label for="" class="form-label">Dealer Code</label>
+                  <input readonly formControlName="dealerCode">
+                </div>
+                <div class="col-4 boxing-decor">
+                  <label for="" class="form-label">Dealer Name</label>
+                  <input formControlName="dealerName">
+                </div>
+                <div class="col-4 boxing-decor">
+                  <label for="" class="form-label">DBA</label>
+                  <input formControlName="dba">
+                </div>
+                <div class="col-4 boxing-decor">
+                  <label for="" class="form-label">Dealer Principal</label>
+                  <input formControlName="dealerPrincipal">
+                </div>
+                <div class="col-4 boxing-decor">
+                  <label for="" class="form-label">Dealer Name For Letter Greeting</label>
+                  <input formControlName="letterGreeting">
+                </div>
+                <div class="col-4 boxing-decor">
+                  <label for="" class="form-label">Sales Group Size</label>
+                  <input formControlName="salesGroupSize">
+                </div>
+                <!-- <div class="boxing-decor col-4">
+                        <label for="">Inception Date</label>
+                        <input type="date" >
+                    </div> -->
+              </div>
+  
+              <div class="mt-4" formGroupName="dealerAddress">
+  
+                <div class="row inner">
+                  <div class="col-12 customcolor font-style mb-1">Address</div>
+                  <div class="col-5 boxing-decor">
+                    <label for="" class="form-label">Address Line 1</label>
+                    <input formControlName="addressLane1" class="custominput">
+                  </div>
+                  <div class="col-5 boxing-decor">
+                    <label for="" class="form-label">State(Province)</label>
+                    <input formControlName="state" class="custominput">
+                  </div>
+                  <div class="col-5 boxing-decor">
+                    <label for="" class="form-label">Address Line 2</label>
+                    <input formControlName="addressLane2" class="custominput">
+                  </div>
+                  <div class="col-5 boxing-decor">
+                    <label for="" class="form-label">Country</label>
+                    <input formControlName="country" class="custominput">
+                  </div>
+                  <div class="col-5 boxing-decor">
+                    <label for="" class="form-label">City</label>
+                    <input formControlName="city" class="custominput">
+                  </div>
+                  <div class="col-5 boxing-decor">
+                    <label for="" class="form-label">ZIP</label>
+                    <input formControlName="zip" class="custominput">
+                  </div>
+                </div>
+  
+                <div class="mt-4">
+                  <div class="row inner">
+                    <div class="col-12 customcolor font-style mb-1">Contact Details</div>
+                    <div class="col-5 boxing-decor">
+                      <label for="" class="form-label">Phone</label>
+                      <input formControlName="phone" class="custominput">
+                    </div>
+                    <div class="col-5 boxing-decor">
+                      <label for="" class="form-label">Dealer Email</label>
+                      <input formControlName="mail" class="custominput">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form><br>
+            <div class="button-container">
+              <button class="func-buttons" (click)="onClickOnBack()"> <i class="bi bi-arrow-left-circle btn-icons"></i>
+                Back</button>
+              <button class="func-buttons" (click)="onClickOnNext()"> <i class="bi bi-arrow-right-circle btn-icons"></i>
+                Next
+              </button>
+              <button class="func-buttons" (click)="onClickOnCancel()"> <i class="bi bi-x-circle btn-icons"></i>
+                Cancel</button>
+            </div>
+          </div>
+          <div *ngIf="formsPersistentValues.showCreateAudit">
+            <div *ngIf="!showAuditors">
+              <form class="assign-card p-3 inner" [formGroup]="auditForm">
+                <div class="row">
+                  <div class="col-4  mb-3">
+                    <label for="validationDefault01" class="mb-1 form-label" style="font-weight: 500;">Audit Type</label>
+                    <span style="color:red;">*</span>
+                    <br />
+                    <select class="w-100 p-1" style="border-radius: 4px;" formControlName="auditType"
+                      (change)="onSelectOfAuditType($event)">
+                      <option value=0>RSA</option>
+                      <option value=1>SALES</option>
+                      <option value=2>Warranty</option>
+                    </select>
+                  </div>
+                  <div class="col-4  mb-3">
+                    <label for="validationDefault02" style="font-weight: 500;" class="form-label">Date assigned</label>
+                    <span style="color:red;">*</span>
+                    <input type="date" id="validationDefault02" placeholder="Last name"
+                      style="border-radius: 4px;margin-top: 3px;height: 30px;border: 1px solid black;padding-left: 5px;"
+                      formControlName="dateAssigned">
+                  </div>
+  
+                  <div class="col-4  mb-3">
+                    <label for="validationDefault01" class="mb-1 form-label" style="font-weight: 500;">Reason Audit was
+                      Selected</label>
+                    <span style="color:red;">*</span>
+                    <select class="w-100 p-1" style="border-radius: 4px;" formControlName="reason">
+                      <option value="volvo" selected>Volvo</option>
+                      <option value="saab">Saab</option>
+                      <option value="opel">Opel</option>
+                      <option value="audi">Audi</option>
+                    </select>
+                  </div>
+  
+                  <div class="col-4  mb-3">
+                    <label for="validationDefault01" class="mb-1 form-label" style="font-weight: 500;">Reports Language</label>
+                    <span style="color:red;">*</span>
+                    <select class="w-100 p-1" style="border-radius: 4px;" formControlName="reportsLanguage"
+                      (change)="onSelectOfReportsLanguage($event)">
+                      <option value=0 selected>English</option>
+                      <option value=1>Spanish</option>
+                      <option value=2>French</option>
+                    </select>
+                  </div>
+  
+                  <div class="col-4  mb-3">
+                    <label for="validationDefaultUsername" style="font-weight: 500;" class="form-label">Number of Months Data</label>
+                    <span style="color:red;">*</span>
+                    <div class="input-group">
+                      <input type="text" id="validationDefaultUsername" placeholder="24"
+                        aria-describedby="inputGroupPrepend2"
+                        style="border-radius: 4px;margin-top: 3px;height: 30px;border: 1px solid black;padding-left: 5px;"
+                        required formControlName="noOfMonths">
+                    </div>
+                  </div>
+                  <!-- <div class="col-4  mb-3">
+                        <label for="validationDefaultUsername" style="font-weight: 500;">State Legal Limitations</label>
+                        <div class="input-group">
+                          <input type="text" class="form-control" id="validationDefaultUsername" placeholder="State Legal Limitations"
+                            aria-describedby="inputGroupPrepend2" style="border-color: black;" required>
+                        </div>
+                      </div> -->
+                  <div class="col-5  mb-3">
+                    <label for="validationDefaultUsername" style="font-weight: 500;" class="form-label">Comments</label>
+                    <div class="input-group">
+                      <textarea name="comments" id="comments" style="font-family:sans-serif;font-size:1.2em;"
+                        formControlName="comments">
+                              </textarea>
+                    </div>
+                  </div>
+                </div>
+  
+  
+              </form>
+              <div class="outerauditorselect">
+                <div class="row inner customwidth">
+                  <div class="col-2"></div>
+                  <div class="col-8">
+  
+                    <table class="table">
+                      <caption style="font-weight: 600; color:black">
+                        <button class="plus-btn">
+                          <i (click)="showAuditorsList()" class="bi bi-plus-square-fill text-success"></i>
+                        </button>
+                        Add Auditor
+                      </caption>
+                      <thead>
+                        <tr style="background-color:#0275d8;color: aliceblue;">
+                          <th scope="col">#</th>
+                          <th scope="col">Auditor</th>
+                          <th scope="col">Work Allocation%</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>
+                            <form class="form-inline d-flex" (submit)="onSearchOfAuditors($event)">
+                              <input class="form-control form-control-sm ml-3 w-75 search" type="text" placeholder="Lead"
+                                aria-label="Search">
+                              <div class="input-group-append">
+                                <span class="search-icon">
+                                  <i class="bi bi-search  m-3 "></i>
+                                </span>
+                              </div>
+                            </form>
+                          </td>
+                          <td>
+                            <input class="w-80" type="number" value={{totalWorkAssigned}} min="0" max="100" readonly />
+                          </td>
+                        </tr>
+                        <tr class="selected-auditors-list" *ngFor="let selectedAuditor of selectedAuditors">
+                          <td> {{selectedAuditor.auditorId}} </td>
+                          <td> {{selectedAuditor.firstName}} {{selectedAuditor.lastName}} </td>
+                          <td><input type="input" id="validationDefaultUsername" min="0" max="100"
+                              placeholder="Enter the percentage of work" aria-describedby="inputGroupPrepend2" required
+                              (change)="onAssigningWork($event, selectedAuditor)">
+  
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="col-2"></div>
+  
+                </div>
+              </div>
+            </div>
+            <div class="row p-3 inner auditors-list" *ngIf="showAuditors">
+              <h3 class="mb-3" style="font-weight: bold;">AUDITORS</h3>
+              <hr class="w-100 p-1" />
+              <table>
+                <tr style="color: aliceblue;background-color: #0275d8;">
+                  <th>
+                    <div class="table-h">
+                      <span>First Name</span>
+                      <span class="acc-dec-buttons">
+                        <i class="fa fa-solid fa-sort m-2"></i>
+                      </span>
+                    </div>
+                    <input type="search" class="form-control form-control-sm ml-3 w-75 search" />
+                  </th>
+                  <th>
+                    <div class="table-h">
+                      <span>Last Name</span>
+                      <span class="acc-dec-buttons">
+                        <i class="fa fa-solid fa-sort m-2"></i>
+                      </span>
+                    </div>
+                    <input type="search" class="form-control form-control-sm ml-3 w-75 search" />
+                  </th>
+                  <th>
+                    <div class="table-h">
+                      <span>City</span>
+                      <span class="acc-dec-buttons">
+                        <i class="fa fa-solid fa-sort m-2"></i>
+                      </span>
+                    </div>
+                  </th>
+                  <th>
+                    <div class="table-h">
+                      <span>State</span>
+                      <span class="acc-dec-buttons">
+                        <i class="fa fa-solid fa-sort m-2"></i>
+                      </span>
+                    </div>
+                  </th>
+                  <th>Sales</th>
+                  <th>RSA</th>
+                  <th>Warenty</th>
+                </tr>
+                <tr *ngFor="let auditor of auditorsList" (click)="onSelectAuditor(auditor)">
+                  <td class="form-label"> {{auditor.firstName}} </td>
+                  <td class="form-label"> {{auditor.lastName}} </td>
+                  <td class="form-label"> {{ auditor.city }} </td>
+                  <td class="form-label"> {{ auditor.state }} </td>
+                  <td class="form-label"> {{auditor.rsa }} </td>
+                  <td class="form-label"> {{auditor.sales}} </td>
+                  <td class="form-label"> {{ auditor.warranty }} </td>
+                </tr>
+              </table>
+  
+            </div>
+            <div class="button-container">
+              <button class="func-buttons" (click)="onClickOnBack1()"> <i class="bi bi-arrow-left-circle btn-icons"></i>
+                Back</button>
+              <button class="func-buttons" (click)="onClickOnNext1()"> <i class="bi bi-arrow-right-circle btn-icons"></i>
+                Next
+              </button>
+              <button class="func-buttons" (click)="onClickOnCancel()"> <i class="bi bi-x-circle btn-icons"></i>
+                Cancel</button>
+            </div>
+          </div>
+          <div *ngIf="formsPersistentValues.showReviewSubmit" class="container mt-5">
+            <div class="row p-3">
+              <div class="col-6">
+                <div class="inner p-3">
+                  <h3 class="dealer-title">Dealer Information</h3>
+                  <p class="infoleft">{{dealer.dba}}</p>
+                  <p class="infoleft">Business Center {{dealer.businessCenter}}</p>
+                  <div class="d-flex">
+                    <i class="fa fa-user infoicon" aria-hidden="true"></i>
+                    <p class="infoicon">{{dealer.dealerName}}</p>
+                  </div>
+                  <div class="d-flex">
+                    <i class="fa fa-home infoicon" aria-hidden="true"></i>
+                    <p class="infoicon">{{dealer.dealerAddress.addressLane1}}</p>
+                  </div>
+                  <p class="infoleft">{{dealer.dealerAddress.addressLane2}}</p>
+                  <p class="infoleft">{{dealer.dealerAddress.city}} - {{dealer.dealerAddress.state}}
+                  </p>
+                  <p class="infoleft">{{dealer.dealerAddress.country}} - {{dealer.dealerAddress.zip}}
+                  </p>
+                  <div class="d-flex">
+                    <i class="fa fa-phone infoicon" aria-hidden="true"></i>
+                    <p class="infoicon">{{dealer.dealerAddress.phone}}</p>
+                  </div>
+                  <div class="d-flex">
+                    <i class="fa fa-envelope infoicon" aria-hidden="true"></i>
+                    <p class="infoicon">{{dealer.dealerAddress.mail}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="inner p-3">
+                  <h3 class="dealer-title">Audit Information</h3>
+                  <p class="d-flex infoleft">{{auditType}}</p>
+                  <div class="d-flex">
+                    <i class="fa fa-calendar infoicon" aria-hidden="true"></i>
+                    <p class="infoicon">{{auditForm.value.dateAssigned}}</p>
+                  </div>
+                  <div class="d-flex">
+                    <i class="fa fa-language infoicon" aria-hidden="true"></i>
+                    <p class="infoicon">{{reportsLanguage}}</p>
+                  </div>
+                </div>
+                <div class="inner mt-3 p-3">
+                  <h3 class="dealer-title">Assigned Auditors</h3>
+                  <ul *ngFor="let auditor of selectedAuditors">
+                    <span *ngFor="let allocatedAuditor of workAllocatedAuditors">
+  
+                      <li class="d-flex" *ngIf="allocatedAuditor.auditor.auditorId==auditor.auditorId">
+                        <i class="fa fa-user infoicon" aria-hidden="true"></i>
+                        <p class="infoicon">{{allocatedAuditor.workAllocation}} - {{auditor.firstName}}</p>
+                      </li>
+  
+                    </span>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="button-container">
+              <button class="func-buttons" (click)="onClickOnBack2()"> <i class="bi bi-arrow-left-circle btn-icons"></i>
+                Back</button>
+              <button class="func-buttons" (click)="onClickOnSubmit()"> Submit <i class="bi bi-check btn-icons-1"></i>
+              </button>
+              <button class="func-buttons" (click)="onClickOnCancel()"> <i class="bi bi-x-circle btn-icons"></i>
+                Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isDashboardClicked">
+          <app-document-dashboard></app-document-dashboard>
+        </div>
+      </div>
+  
+    </div>
+  </mat-drawer-container>
+</div>

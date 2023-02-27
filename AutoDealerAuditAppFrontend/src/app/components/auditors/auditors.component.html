@@ -1,0 +1,53 @@
+<div class="row p-3">
+  <h3 class="mb-3" style="font-weight: bold;">AUDITORS</h3>
+  <hr class="w-100 p-1" />
+  <table>
+    <tr class="bg-primary " style="color: aliceblue;">
+      <th>
+        <div class="table-h">
+          <span>First Name</span>
+          <span class="acc-dec-buttons">
+            <i class="fa fa-solid fa-sort m-2"></i>
+          </span>
+        </div>
+        <input type="search" class="search w-99" />
+      </th>
+      <th>
+        <div class="table-h">
+          <span>Last Name</span>
+          <span class="acc-dec-buttons">
+            <i class="fa fa-solid fa-sort m-2"></i>
+          </span>
+        </div>
+        <input type="search" class="search w-99" />
+      </th>
+      <th><div class="table-h">
+        <span>City</span>
+        <span class="acc-dec-buttons">
+          <i class="fa fa-solid fa-sort m-2"></i>
+        </span>
+      </div>
+      </th>
+      <th><div class="table-h">
+        <span>State</span>
+        <span class="acc-dec-buttons">
+          <i class="fa fa-solid fa-sort m-2"></i>
+        </span>
+      </div>
+      </th>
+      <th>Sales</th>
+      <th>RSA</th>
+      <th>Warenty</th>
+    </tr>
+    <tr *ngFor="let auditor of auditorsList">
+      <td> {{auditor.auditorId}} </td>
+      <td> {{auditor.rsa }} </td>
+      <td> {{auditor.sales}} </td>
+      <td> {{ auditor.warranty }} </td>
+      <td> {{auditor.rsa }} </td>
+      <td> {{auditor.sales}} </td>
+      <td> {{ auditor.warranty }} </td>
+    </tr>
+  </table>
+
+</div>
